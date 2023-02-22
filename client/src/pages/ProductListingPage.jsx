@@ -150,9 +150,12 @@ export class ProductListingPage extends Component {
         }
       }
     }
-    if (product.attributes.length === 0) {
-      this.props.dispatch(newCartItem({product}));
+    if (product.attributes.length !== 0) {
+      for (const attribute of product.attributes) {
+        attribute.items[0].isSelected = true;
+      }
     }
+    this.props.dispatch(newCartItem({product}));
   }
 
   render() {
