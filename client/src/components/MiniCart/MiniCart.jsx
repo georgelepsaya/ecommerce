@@ -163,7 +163,7 @@ class MiniCart extends Component {
           <>
           <Backdrop togglePosition={this.state.scrolled} backdropHeight={this.state.backdropHeight + 230} onClick={() => this.props.dispatch(toggleMinicartModal())}/>
           <ModalContainer togglePosition={this.state.scrolled > 75}>
-            <MiniCartHeader><b>My Bag</b>, {this.props.cart.amount} items</MiniCartHeader>
+            <MiniCartHeader><b>My Bag</b>, {this.props.cart.amount} {this.props.cart.amount !== 1 ? "items" : "item"}</MiniCartHeader>
             {this.props.cart.cartItems.map(item => {
               return <MiniCartItem product={item} key={item.id + `${Math.random()}`}/>
             })}
