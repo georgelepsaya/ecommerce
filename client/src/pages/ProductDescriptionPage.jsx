@@ -138,7 +138,7 @@ class ProductDescriptionPage extends Component {
             return <AttributeSet key={Math.floor(Math.random()*1000000).toString()} attr={attr} />
           })}
           <PriceTag>PRICE:</PriceTag>
-          <Price>{curr.symbol}{product.prices.find(price => price.currency.label === curr.label).amount}</Price>
+          <Price>{curr.symbol}{product.prices.find(price => price.currency.label === curr.label).amount.toFixed(2)}</Price>
           <AddToCart isInStock={product.inStock}/>
           <ProductDescription
             ref={this.containerRef}

@@ -215,7 +215,7 @@ export class ProductListingPage extends Component {
                   <ProductImage src={product.gallery[0]}/>
                   <ProductInfo>
                     <ProductName>{product.brand} {product.name}</ProductName>
-                    <ProductPrice>{curr.symbol}{product.prices.find(price => price.currency.label === curr.label).amount}</ProductPrice>
+                    <ProductPrice>{curr.symbol}{product.prices.find(price => price.currency.label === curr.label).amount.toFixed(2)}</ProductPrice>
                   </ProductInfo>
                 </ProductContainer>
                 <Circle onClick={() => this.addProductHandler(product)}>

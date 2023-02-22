@@ -136,7 +136,7 @@ class MiniCartItem extends Component {
       <Container >
         <Info>
           <Name>{product.name}</Name>
-          <Price>{curr.symbol}{product.prices.find(price => price.currency.label === curr.label).amount}</Price>
+          <Price>{curr.symbol}{product.prices.find(price => price.currency.label === curr.label).amount.toFixed(2)}</Price>
           {product.attributes.map(attr => {
             return (
               <div key={Math.random()}>
