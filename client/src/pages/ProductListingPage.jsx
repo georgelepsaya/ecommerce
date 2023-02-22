@@ -155,7 +155,9 @@ export class ProductListingPage extends Component {
         attribute.items[0].isSelected = true;
       }
     }
-    this.props.dispatch(newCartItem({product}));
+    if (product.inStock === true) {
+      this.props.dispatch(newCartItem({product}));
+    }
   }
 
   render() {
