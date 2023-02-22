@@ -55,6 +55,7 @@ function withParams(Component, properties, toFetch) {
             title: curr_page.page,
           },
         },
+        fetchPolicy: "no-cache",
       });
       category = categoryData;
       loadingCategory = loadingCat;
@@ -66,7 +67,9 @@ function withParams(Component, properties, toFetch) {
         variables: {
           id: useParams().id,
         },
+        fetchPolicy: "no-cache",
       });
+
       singleProduct = onlyProduct;
       loadingProduct = loadingPr;
     }
@@ -79,6 +82,7 @@ function withParams(Component, properties, toFetch) {
             title: curr_page.page,
           },
         },
+        fetchPolicy: "no-cache",
       });
       attributes = allAttributes;
       loadingAttributes = loadingAllAttr;
