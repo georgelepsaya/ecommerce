@@ -116,14 +116,14 @@ class Currencies extends Component {
           <>
             <Backdrop backdropHeight={this.state.backdropHeight + 230} onClick={() => this.props.dispatch(toggleCurrenciesModal())}/>
             <CurrenciesOptions togglePosition={this.state.scrolled > 70}>
-              {this.props.currs.map(curr => {
+              {this.props.currs ? this.props.currs.map(curr => {
                 const label = curr.label;
                 const symbol = curr.symbol;
                 return <Option onClick={() => {
                   this.props.dispatch(updateCurrency({label, symbol}));
                   this.changeCurrHandler(curr);
                 }} key={curr.label}>{curr.symbol} {curr.label}</Option>
-              })}
+              }) : <p>Error</p>}
             </CurrenciesOptions>
           </>
         }

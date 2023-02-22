@@ -77,13 +77,14 @@ const StyledNavLink = styled(NavLink)`
 
 export class Navbar extends Component {
   render() {
-    const pages = this.props.categories.categories;
+    const pages = this.props.categories && this.props.categories.categories;
     const amount = this.props.amount;
+    
     return (
         <Container>
           <Wrapper>
             <Left>
-              {pages.map(page => {
+              {pages ? pages.map(page => {
                 return (
                   <MenuItem key={page.name} onClick={() => {
                     this.props.dispatch(updatePage(page.name));
@@ -100,7 +101,7 @@ export class Navbar extends Component {
                     </StyledNavLink>
                   </MenuItem>
                 )
-              })}
+              }) : <p>Error</p>}
             </Left>
             <Center>
               <img src={brandIcon} alt="brand-icon" />

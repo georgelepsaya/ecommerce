@@ -94,7 +94,7 @@ function withParams(Component, properties, toFetch) {
     if (loadingCategory || loadingProduct || loadingCategories || loadingCurrencies || loadingAttributes) {
       return ""
     } else {
-      return <Component {...props} params={useParams()} dispatch={useDispatch()} {...selectedProperties} categories={categories} categoryData={category} onlyProduct={singleProduct} attributes={attributes} currs={currencies.currencies} setSearchParams={setSearchParams} searchParams={searchParams} />
+      return <Component {...props} params={useParams()} dispatch={useDispatch()} {...selectedProperties} categories={categories} categoryData={category} onlyProduct={singleProduct} attributes={attributes} currs={currencies ? currencies.currencies : null} setSearchParams={setSearchParams} searchParams={searchParams} />
     }
   }
 }

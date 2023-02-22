@@ -9,6 +9,7 @@ import React, { Component } from "react";
 import { onError } from "@apollo/client/link/error";
 import withParams from "./components/withParams";
 import MainWrap from "./components/layout/MainWrap";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -29,7 +30,9 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <MainWrap />
+        <ErrorBoundary>
+          <MainWrap />
+        </ErrorBoundary>
       </ApolloProvider>
     )
   };
