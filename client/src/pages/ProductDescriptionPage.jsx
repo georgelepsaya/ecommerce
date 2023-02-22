@@ -9,6 +9,8 @@ const GalleryContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 40px;
+  max-height: 600px;
+  overflow-y: auto;
 `
 
 const RouteContainer = styled.div`
