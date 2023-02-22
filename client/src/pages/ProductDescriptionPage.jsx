@@ -4,7 +4,6 @@ import AttributeSet from '../components/Attributes/AttributeSet';
 import { setProduct } from '../features/set_product/setProductSlice';
 import AddToCart from '../components/AddToCart';
 import withParams from '../components/withParams';
-import DOMPurify from "dompurify";
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -81,6 +80,20 @@ class ProductDescriptionPage extends Component {
     this.state = {
       showImage: this.product.gallery[0],
     };
+    this.containerRef = React.createRef();
+  }
+
+  sanitizeHtml(strHTML) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(strHTML, 'text/html');
+    const serializer = new XMLSerializer();
+    return serializer.serializeToString(doc);
+  }
+
+  componentDidMount() {
+    const htmlString = this.product.description;
+    const sanitizedHtmlString = this.sanitizeHtml(htmlString);
+    this.containerRef.current.innerHTML = sanitizedHtmlString;
   }
 
   product = this.props.onlyProduct.product;
@@ -93,7 +106,6 @@ class ProductDescriptionPage extends Component {
     const product = JSON.parse(JSON.stringify(this.product));
     product.amount = 1;
     const curr = this.props.currency.currency;
-    const descriptionSafe = DOMPurify.sanitize(this.product.description);
 
     for (const key in product) {
       if (Object.hasOwnProperty.call(product, key)) {
@@ -127,9 +139,7 @@ class ProductDescriptionPage extends Component {
           <Price>{curr.symbol}{product.prices.find(price => price.currency.label === curr.label).amount}</Price>
           <AddToCart isInStock={product.inStock}/>
           <ProductDescription
-            dangerouslySetInnerHTML={{
-            __html: descriptionSafe,
-            }}
+            ref={this.containerRef}
           ></ProductDescription>
         </ProductInfo>
       </Container>
