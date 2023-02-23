@@ -14,7 +14,11 @@ class FilterBar extends Component {
     const attributes = {};
     products.forEach(attrs => {
       attrs.attributes.forEach(attr => {
-        attributes[attr.name] = [attr.type, attr.items];
+        if (attributes["Size"] && !attributes["Size alpha"]) {
+          attributes["Size alpha"] = [attr.type, attr.items];
+        } else {
+          attributes[attr.name] = [attr.type, attr.items];
+        }
       })
     });
     return (

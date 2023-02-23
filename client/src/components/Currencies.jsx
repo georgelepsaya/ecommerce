@@ -123,7 +123,7 @@ class Currencies extends Component {
                   this.props.dispatch(updateCurrency({label, symbol}));
                   this.changeCurrHandler(curr);
                 }} key={curr.label}>{curr.symbol} {curr.label}</Option>
-              }) : <p>Error</p>}
+              }) : <p>Currencies</p>}
             </CurrenciesOptions>
           </>
         }

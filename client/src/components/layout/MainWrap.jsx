@@ -28,7 +28,7 @@ class MainWrap extends Component {
               <Routes>
                 {this.props.categories ? this.props.categories.categories.map(category => {
                   return <Route key={Math.random()} path={`${category.name}`} element={<ProductListingPage category={`${category.name}`} />} />
-                }) : <Route path="*" element={<p>Error</p>} />}
+                }) : <Route path="*" element={<p>Product Listing Page</p>} />}
                 <Route path="/product/:id" element={<ProductDescriptionPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="*" element={<Navigate to="/all" replace />} />

@@ -170,6 +170,8 @@ export class ProductListingPage extends Component {
       if (value === "YesNo" || value === "NoYes") {
         params.push([key, "Yes"]);
         params.push([key, "No"]);
+      } else if (key === "size_alpha") { 
+        params.push(["size", value]);
       } else {
         params.push([key, value]);
       }
@@ -188,6 +190,7 @@ export class ProductListingPage extends Component {
       })
       allProdAttrs.push([product.id, prodAttrs]);
     })
+
     allProdAttrs.forEach(pr => {
       pr[1].forEach(atr => {
         if (isInArr(atr, params)) {

@@ -6,8 +6,7 @@ export const FilterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 500px;
-  height: auto;
+  height: fit-content;
   width: 20%;
   min-width: 350px;
   z-index: 2;
