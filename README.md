@@ -1,6 +1,3 @@
-# react_task
-Scandiweb react task
-
 ## How to start this project
 - In **server**:
   * npm i
